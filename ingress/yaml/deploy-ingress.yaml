@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-myapp
+  namespace: default
+  annotations:	# 说明和controller相对于的是nginx规则
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: myapp.ttxsgoto.com
+  #- host: 10.68.2.238
+    http:
+      paths:
+      - path: 
+        backend:	# 对应后端的地址
+          serviceName: myapp  #对应svc的名称
+          servicePort: 80
